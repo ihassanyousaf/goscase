@@ -29,7 +29,7 @@ func SnakeToCamel(value string) string {
 	return string(result)
 }
 
-func SamelToSnake(value string) string {
+func CamelToSnake(value string) string {
 	if value[0] == '_' {
 		return value
 	} else if unicode.IsUpper(rune(value[0]))   {
@@ -54,7 +54,7 @@ func converted(key string, camel bool) (string, bool) {
 	if camel {
 		result = SnakeToCamel(key)
 	} else {
-		result= SamelToSnake(key)
+		result= CamelToSnake(key)
 	}
 	if result == key {
 		return result, false
@@ -100,7 +100,7 @@ func SnakeToCamelJSON(data interface{}) map[string]interface{} {
 	return mapParsing(result, true)
 }
 
-func SamelToSnakeJSON(data interface{}) map[string]interface{} {
+func CamelToSnakeJSON(data interface{}) map[string]interface{} {
 	result := make(map[string]interface{})
 	byteData, _ := json.Marshal(data);
 	_ = json.Unmarshal(byteData, &result)
